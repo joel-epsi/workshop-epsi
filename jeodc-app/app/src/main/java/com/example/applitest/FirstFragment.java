@@ -54,7 +54,7 @@ public class FirstFragment extends Fragment implements CheckIpAndPortInterface.N
                 //NavHostFragment.findNavController(FirstFragment.this)
                    //   .navigate(R.id.action_FirstFragment_to_SecondFragment);
                 if(stateChecking == CheckIpAndPortInterface.StateChecking.INIT){
-                    checkIpAndPort.startChecking();
+                    checkIpAndPort.startChecking(getContext());
                 }
 
             }
