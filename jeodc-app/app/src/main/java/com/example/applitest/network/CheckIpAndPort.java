@@ -15,12 +15,22 @@ public class CheckIpAndPort extends ListenerManager<CheckIpAndPortInterface.Noti
 
     HashMap<String, HashMap<String, String>> hashMapDatas = new HashMap<>();
 
-    public CheckIpAndPort() {
+    public CheckIpAndPort() {}
 
+
+    public void startChecking(){
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 //TODO Methods to check
+                stateChecking = StateChecking.CHECKING;
+                notifyListeners();
+
+
+                
+
+
+
 
 
             }
