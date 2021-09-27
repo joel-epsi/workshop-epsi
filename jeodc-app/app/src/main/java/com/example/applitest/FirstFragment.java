@@ -10,10 +10,14 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.applitest.databinding.FragmentFirstBinding;
+import com.example.applitest.network.CheckIpAndPort;
+import com.example.applitest.network.CheckIpAndPortInterface;
 
-public class FirstFragment extends Fragment {
+public class FirstFragment extends Fragment implements CheckIpAndPortInterface.NotificationListener {
 
     private FragmentFirstBinding binding;
+
+    CheckIpAndPort checkIpAndPort = new CheckIpAndPort();
 
     @Override
     public View onCreateView(
@@ -22,6 +26,10 @@ public class FirstFragment extends Fragment {
     ) {
 
         binding = FragmentFirstBinding.inflate(inflater, container, false);
+
+        checkIpAndPort.addListener(this);
+
+
         return binding.getRoot();
 
     }
@@ -29,11 +37,16 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
+        binding.buttonLaunchScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                //NavHostFragment.findNavController(FirstFragment.this)
+                   //   .navigate(R.id.action_FirstFragment_to_SecondFragment);
+
+
+
+
+
             }
         });
     }
@@ -44,4 +57,9 @@ public class FirstFragment extends Fragment {
         binding = null;
     }
 
+
+    @Override
+    public void onStateCheckingChanged() {
+
+    }
 }
